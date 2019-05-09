@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using Moviegram.Domain.Interfaces;
+using Moviegram.Application.Configurations;
 
 namespace Moviegram.Controllers
 {

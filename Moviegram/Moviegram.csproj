@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Moviegram.Application\Moviegram.Application.csproj" />
+    <ProjectReference Include="..\Moviegram.Domain\Moviegram.Domain.csproj" />
     <ProjectReference Include="..\Moviegram.Infrastructure\Moviegram.Infrastructure.csproj" />
     <ProjectReference Include="..\Moviegram.Persistence\Moviegram.Persistence.csproj" />
   </ItemGroup>

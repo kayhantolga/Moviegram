@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Moviegram.Common.Utilities;
-using Moviegram.Domain.Interfaces;
 using Moviegram.Persistence.DbContexts;
 
 namespace Moviegram.Application.Configurations

@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Moviegram.Common.Utilities;
+using Moviegram.Persistence.DbContexts;
 
-namespace Moviegram.Domain.Interfaces
+namespace Moviegram.Application.Configurations
 {
     public interface IUserStaticContext
     {
@@ -9,5 +10,6 @@ namespace Moviegram.Domain.Interfaces
         Task SetCursor();
 
         Cursor Cursor { get; set; }
+        MoviegramDbContext Db { get; set; }
     }
 }
