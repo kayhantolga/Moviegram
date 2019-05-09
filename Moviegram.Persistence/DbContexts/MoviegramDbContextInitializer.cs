@@ -1,6 +1,6 @@
-﻿namespace Moviegram.Persistence.DbContext
+﻿namespace Moviegram.Persistence.DbContexts
 {
-    public static class AppIdentityDbContextInitializer
+    public static class MoviegramDbContextInitializer
     {
         public static void Initialize(MoviegramDbContext context)
         {

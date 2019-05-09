@@ -12,4 +12,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="4.5.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Moviegram.Application\Moviegram.Application.csproj" />
+    <ProjectReference Include="..\Moviegram.Infrastructure\Moviegram.Infrastructure.csproj" />
+    <ProjectReference Include="..\Moviegram.Persistence\Moviegram.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

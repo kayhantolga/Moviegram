@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Moviegram.Persistence.DbContext;
+using Moviegram.Persistence.DbContexts;
 
 namespace Moviegram.Persistence.Infrastructure
 {

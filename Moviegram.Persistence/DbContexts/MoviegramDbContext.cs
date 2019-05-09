@@ -1,12 +1,12 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Moviegram.Domain.Entities;
 using Moviegram.Persistence.Extensions;
 
-namespace Moviegram.Persistence.DbContext
+namespace Moviegram.Persistence.DbContexts
 {
-    public class MoviegramDbContext : Microsoft.EntityFrameworkCore.DbContext, IDisposable
+    public class MoviegramDbContext : DbContext
     {
         public MoviegramDbContext(DbContextOptions<MoviegramDbContext> options)
             : base(options)
@@ -16,6 +16,10 @@ namespace Moviegram.Persistence.DbContext
         public MoviegramDbContext()
         {
         }
+
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Celebrity> Celebrities { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,7 +31,11 @@ namespace Moviegram.Persistence.DbContext
                     .AddJsonFile("appsettings.Development.json", true)
                     .AddEnvironmentVariables()
                     .Build();
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
+                optionsBuilder.UseSqlServer(connectionString);
+
             }
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
