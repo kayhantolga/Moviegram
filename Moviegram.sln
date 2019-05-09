@@ -1,0 +1,91 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moviegram", "Moviegram\Moviegram.csproj", "{69B30A2E-9625-42D8-B906-360BAA6E214D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{C702469E-604E-4012-9FC7-F8A02B180AED}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{6DB25AD4-A863-429A-B632-145198ECEA5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F151AF69-FF26-4385-A066-75A88DBEECC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{57F69315-87F3-46DE-A7BD-AD2719BBE858}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{46ED18DE-8918-4E1D-9984-DE19611959C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C2639435-C2A6-4C72-8390-6BFEF14845E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C46B1F51-A75F-483C-B29C-5B43ED22FB9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moviegram.Common", "Moviegram.Common\Moviegram.Common.csproj", "{DA831276-21BE-4A53-894C-600766B9D43A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moviegram.Application", "Moviegram.Application\Moviegram.Application.csproj", "{958AB3A3-8120-4B9D-AE4F-CE5FDB4964E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moviegram.Domain", "Moviegram.Domain\Moviegram.Domain.csproj", "{8CED31A7-5708-4D10-82C3-09D79F473B46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moviegram.Infrastructure", "Moviegram.Infrastructure\Moviegram.Infrastructure.csproj", "{9A3E78E0-286E-4612-8274-DF02BE1EB68F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moviegram.Persistence", "Moviegram.Persistence\Moviegram.Persistence.csproj", "{93DA4FD3-D776-4906-A95C-894F0CA2F017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moviegram.IntegrationTests", "Moviegram.IntegrationTests\Moviegram.IntegrationTests.csproj", "{44E0BCA0-C89B-4F18-93AE-62EFC429EC89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69B30A2E-9625-42D8-B906-360BAA6E214D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69B30A2E-9625-42D8-B906-360BAA6E214D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69B30A2E-9625-42D8-B906-360BAA6E214D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69B30A2E-9625-42D8-B906-360BAA6E214D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA831276-21BE-4A53-894C-600766B9D43A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA831276-21BE-4A53-894C-600766B9D43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA831276-21BE-4A53-894C-600766B9D43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA831276-21BE-4A53-894C-600766B9D43A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958AB3A3-8120-4B9D-AE4F-CE5FDB4964E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958AB3A3-8120-4B9D-AE4F-CE5FDB4964E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958AB3A3-8120-4B9D-AE4F-CE5FDB4964E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958AB3A3-8120-4B9D-AE4F-CE5FDB4964E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CED31A7-5708-4D10-82C3-09D79F473B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CED31A7-5708-4D10-82C3-09D79F473B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CED31A7-5708-4D10-82C3-09D79F473B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CED31A7-5708-4D10-82C3-09D79F473B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A3E78E0-286E-4612-8274-DF02BE1EB68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A3E78E0-286E-4612-8274-DF02BE1EB68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A3E78E0-286E-4612-8274-DF02BE1EB68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A3E78E0-286E-4612-8274-DF02BE1EB68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93DA4FD3-D776-4906-A95C-894F0CA2F017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93DA4FD3-D776-4906-A95C-894F0CA2F017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93DA4FD3-D776-4906-A95C-894F0CA2F017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93DA4FD3-D776-4906-A95C-894F0CA2F017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44E0BCA0-C89B-4F18-93AE-62EFC429EC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E0BCA0-C89B-4F18-93AE-62EFC429EC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E0BCA0-C89B-4F18-93AE-62EFC429EC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44E0BCA0-C89B-4F18-93AE-62EFC429EC89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69B30A2E-9625-42D8-B906-360BAA6E214D} = {C46B1F51-A75F-483C-B29C-5B43ED22FB9F}
+		{57F69315-87F3-46DE-A7BD-AD2719BBE858} = {6DB25AD4-A863-429A-B632-145198ECEA5A}
+		{46ED18DE-8918-4E1D-9984-DE19611959C4} = {6DB25AD4-A863-429A-B632-145198ECEA5A}
+		{C2639435-C2A6-4C72-8390-6BFEF14845E1} = {6DB25AD4-A863-429A-B632-145198ECEA5A}
+		{C46B1F51-A75F-483C-B29C-5B43ED22FB9F} = {6DB25AD4-A863-429A-B632-145198ECEA5A}
+		{DA831276-21BE-4A53-894C-600766B9D43A} = {57F69315-87F3-46DE-A7BD-AD2719BBE858}
+		{958AB3A3-8120-4B9D-AE4F-CE5FDB4964E9} = {46ED18DE-8918-4E1D-9984-DE19611959C4}
+		{8CED31A7-5708-4D10-82C3-09D79F473B46} = {46ED18DE-8918-4E1D-9984-DE19611959C4}
+		{9A3E78E0-286E-4612-8274-DF02BE1EB68F} = {C2639435-C2A6-4C72-8390-6BFEF14845E1}
+		{93DA4FD3-D776-4906-A95C-894F0CA2F017} = {C2639435-C2A6-4C72-8390-6BFEF14845E1}
+		{44E0BCA0-C89B-4F18-93AE-62EFC429EC89} = {F151AF69-FF26-4385-A066-75A88DBEECC9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF5A46F4-E4C3-4E18-AF35-8BDCB3507A94}
+	EndGlobalSection
+EndGlobal
