@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace Moviegram.Common.Utilities
 {
@@ -38,6 +39,10 @@ namespace Moviegram.Common.Utilities
                 cursor.Index = index;
             }
             return cursor;
+        }
+        public static IQueryable<TSource> GoToCursor<TSource>(this IQueryable<TSource> items, Cursor cursor)
+        {
+            return items.Skip(cursor.Index * cursor.PageSize).Take(cursor.PageSize);
         }
     }
 }
