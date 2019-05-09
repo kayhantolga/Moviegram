@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Moviegram.Application.Configurations;
+using Moviegram.Domain.Interfaces;
 using Moviegram.Persistence.DbContexts;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
@@ -73,6 +75,9 @@ namespace Moviegram
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
+
+            services.AddScoped<IUserStaticContext, RequestStatics>();
+
         }
     }
 }
