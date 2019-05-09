@@ -4,4 +4,14 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Filters\" />
+    <Folder Include="Models\BindingModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Moviegram.Domain\Moviegram.Domain.csproj" />
+    <ProjectReference Include="..\Moviegram.Persistence\Moviegram.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
