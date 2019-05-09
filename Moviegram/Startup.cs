@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Moviegram
 {
@@ -25,7 +29,30 @@ namespace Moviegram
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Title = "Moviegram API",
+                    Version = "v1",
+                    Contact = new Contact()
+                    {
+                        Name = "Tolga Sedat Kayhan",
+                        Email = "kayhantolga@gmail.com",
+                        Url = "https://www.linkedin.com/in/kayhantolga/"
+                    },
+                    Description = "More description will be come here."
+                });
+                c.DescribeAllEnumsAsStrings();
+                c.EnableAnnotations();
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvcCore().AddApiExplorer().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +70,15 @@ namespace Moviegram
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.DocumentTitle = "Moviegram";
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
+                c.DocExpansion(DocExpansion.None);
+
+                c.OAuthClientId("424F5699-9FBA-4161-AE79-49839455E04A");
+            });
         }
     }
 }
