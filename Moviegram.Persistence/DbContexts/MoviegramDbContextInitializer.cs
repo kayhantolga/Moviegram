@@ -23,13 +23,13 @@ namespace Moviegram.Persistence.DbContexts
             Randomizer.Seed = new Random(1);
 
             var testMovies = new Faker<Movie>()
-                .RuleFor(o => o.Id, f => Guid.NewGuid())
+                .RuleFor(o => o.Id, f => f.Random.Guid())
                 .RuleFor(o => o.Genre, f => f.Lorem.Paragraphs())
                 .RuleFor(o => o.Title, f => $"{f.Lorem.Sentence(3)}")
-                .RuleFor(o=> o.Poster, (f,o)=>f.Image.PlaceholderUrl(1024,1024,o.Title,f.Internet.Color().Replace("#","")));
+                .RuleFor(o => o.Poster, (f, o) => f.Image.PlaceholderUrl(1024, 1024, o.Title, f.Internet.Color().Replace("#", "")));
 
             var testCelebrities = new Faker<Celebrity>()
-                .RuleFor(u => u.Id, f => Guid.NewGuid())
+                .RuleFor(u => u.Id, f => f.Random.Guid())
                 .RuleFor(u => u.Name, f => $"{f.Name.FirstName()} {f.Name.LastName()}")
                 .RuleFor(u => u.ProfilePhoto, f => f.Internet.Avatar());
 
@@ -50,18 +50,23 @@ namespace Moviegram.Persistence.DbContexts
                         MovieId = movie.Id
                     });
 
-                var timeCount = random.Next(5);
+                var movieTimes = random.Next(60, 180);
                 var startTime = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, 9, 0, 0);
-                //Generate average movie time
-                var averageTime = (double)9 / timeCount;
+                var tempTime = startTime;
 
-                for (var i = 0; i < timeCount; i++)
-                    movie.MovieShowTimes.Add(new MovieShowTime
+                do
+                {
+                    var tempShowTime = new MovieShowTime
                     {
                         Id = Guid.NewGuid(),
-                        ShowTimeStart = startTime.AddMinutes(averageTime * 60 * i + 30),
-                        ShowTimeEnd = startTime.AddMinutes(averageTime * 60 * (i + 1))
-                    });
+                        ShowTimeStart = tempTime,
+                        ShowTimeEnd = tempTime.AddMinutes(movieTimes)
+                    };
+                    movie.MovieShowTimes.Add(tempShowTime);
+                    tempTime = tempTime.AddMinutes(movieTimes + 30);
+                } while (tempTime < startTime.AddHours(9));
+
+               
                 context.Movies.Add(movie);
             }
 
