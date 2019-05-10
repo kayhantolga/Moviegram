@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Moviegram.Application.Managers;
@@ -18,16 +19,26 @@ namespace Moviegram.Controllers
         }
 
         [HttpGet]
+        [Route("DetailInformation")]
+        [ProducesResponseType(typeof(MovieResponseModel), 200)]
+        public async Task<IActionResult> GetDetailInformation(Guid id)
+        {
+            var movieDetail = await _movieManager.GetMovieDetail(id);
+            var result = new MovieResponseModel(movieDetail);
+
+            return Ok(result);
+        }
+
+        [HttpGet]
         [Route("Movies")]
         [ProducesResponseType(typeof(MoviesListResponseModel), 200)]
         public async Task<IActionResult> GetMovies()
         {
-           // var movieManager = new MovieManager(UserStaticContext);
             var result = new MoviesListResponseModel
             {
                 Movies = (await _movieManager.GetMovieList()).Select(r => new MovieListResponseModel(r)).ToList()
             };
-     
+
             return Ok(result);
         }
     }
