@@ -15,14 +15,15 @@ namespace Moviegram.Models.ResponseModels
     /// </summary>
     public class MovieResponseModel
     {
-        public MovieResponseModel(MovieViewModel movieView)
+        public MovieResponseModel(MovieViewModel model)
         {
-            Genre = movieView.Genre;
-            Id = movieView.Id;
-            Poster = movieView.Poster;
-            Title = movieView.Title;
-            MovieShowTimes = movieView.MovieShowTimes.Select(r => new MovieShowTimeResponseModel(r));
-            Actors = movieView.Actors.Select(r => new CelebrityResponseModel(r));
+            if (model == null) return;
+            Genre = model.Genre;
+            Id = model.Id;
+            Poster = model.Poster;
+            Title = model.Title;
+            MovieShowTimes = model.MovieShowTimes.Select(r => new MovieShowTimeResponseModel(r));
+            Actors = model.Actors.Select(r => new CelebrityResponseModel(r));
         }
 
         /// <summary>
@@ -59,12 +60,14 @@ namespace Moviegram.Models.ResponseModels
     /// </summary>
     public class MovieListResponseModel
     {
-        public MovieListResponseModel(MovieListViewModel movieView)
+        public MovieListResponseModel(MovieListViewModel model)
         {
-            Id = movieView.Id;
-            Poster = movieView.Poster;
-            Title = movieView.Title;
-            MovieShowTimes = movieView.MovieShowTimes.Select(r => new MovieShowTimeResponseModel(r));
+            if (model == null) return;
+
+            Id = model.Id;
+            Poster = model.Poster;
+            Title = model.Title;
+            MovieShowTimes = model.MovieShowTimes.Select(r => new MovieShowTimeResponseModel(r));
         }
 
         /// <summary>

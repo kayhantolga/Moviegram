@@ -11,6 +11,8 @@ namespace Moviegram.Models.ResponseModels
     {
         public MovieSearchResponseModel(MovieSearchListViewModel model)
         {
+            if (model == null) return;
+
             SearchDepth = model.SearchDepth;
             Title = model.Title;
             Movies = model.Movies.Select(r => new MovieListResponseModel(r)).ToList();

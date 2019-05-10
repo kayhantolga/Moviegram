@@ -7,6 +7,8 @@ namespace Moviegram.Models.ResponseModels
     {
         public CelebrityResponseModel(CelebrityViewModel model)
         {
+            if (model == null) return;
+
             Id = model.Id;
             Name = model.Name;
             ProfilePhoto = model.ProfilePhoto;

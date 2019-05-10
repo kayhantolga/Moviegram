@@ -7,6 +7,8 @@ namespace Moviegram.Models.ResponseModels
     {
         public MovieShowTimeResponseModel(MovieShowTimeViewModel model)
         {
+            if (model == null) return;
+
             EndTime = model.EndTime;
             StartTime = model.StartTime;
         }
