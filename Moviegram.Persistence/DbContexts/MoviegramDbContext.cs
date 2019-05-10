@@ -19,6 +19,7 @@ namespace Moviegram.Persistence.DbContexts
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Celebrity> Celebrities { get; set; }
+        public DbSet<MovieCelebrity> temp { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

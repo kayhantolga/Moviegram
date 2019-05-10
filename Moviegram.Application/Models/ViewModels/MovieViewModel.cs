@@ -13,18 +13,23 @@ namespace Moviegram.Application.Models.ViewModels
         public string Title { get; set; }
         public string Genre { get; set; }
         public string Poster { get; set; }
-        public  IEnumerable<MovieShowTimeViewModel> MovieShowTimes { get; set; }
+        public IEnumerable<CelebrityViewModel> Actors { get; set; }
+        public IEnumerable<MovieShowTimeViewModel> MovieShowTimes { get; set; }
+
         public static Expression<Func<Movie, MovieViewModel>> Projection
         {
             get
             {
-                return item => new MovieViewModel()
+                return item => new MovieViewModel
                 {
                     Id = item.Id,
                     Genre = item.Genre,
                     Poster = item.Poster,
                     Title = item.Title,
-                    MovieShowTimes = item.MovieShowTimes.AsQueryable().OrderBy(r=>r.ShowTimeStart).Select(MovieShowTimeViewModel.Projection)
+                    MovieShowTimes = item.MovieShowTimes.AsQueryable().OrderBy(r => r.ShowTimeStart)
+                        .Select(MovieShowTimeViewModel.Projection),
+                    Actors = item.Actors.AsQueryable().OrderBy(r => r.Celebrity.Name).Select(r => r.Celebrity)
+                        .Select(CelebrityViewModel.Projection)
                 };
             }
         }
@@ -41,16 +46,18 @@ namespace Moviegram.Application.Models.ViewModels
         public string Title { get; set; }
         public string Poster { get; set; }
         public IEnumerable<MovieShowTimeViewModel> MovieShowTimes { get; set; }
+
         public static Expression<Func<Movie, MovieListViewModel>> Projection
         {
             get
             {
-                return item => new MovieListViewModel()
+                return item => new MovieListViewModel
                 {
                     Id = item.Id,
                     Poster = item.Poster.ToThumbnail(),
                     Title = item.Title,
-                    MovieShowTimes = item.MovieShowTimes.AsQueryable().OrderBy(r => r.ShowTimeStart).Select(MovieShowTimeViewModel.Projection)
+                    MovieShowTimes = item.MovieShowTimes.AsQueryable().OrderBy(r => r.ShowTimeStart)
+                        .Select(MovieShowTimeViewModel.Projection)
                 };
             }
         }

@@ -19,6 +19,7 @@ namespace Moviegram.Models.ResponseModels
             Poster = movieView.Poster;
             Title = movieView.Title;
             MovieShowTimes = movieView.MovieShowTimes.Select(r => new MovieShowTimeResponseModel(r));
+            Actors = movieView.Actors.Select(r => new CelebrityResponseModel(r));
         }
 
         public string Genre { get; set; }
@@ -26,6 +27,7 @@ namespace Moviegram.Models.ResponseModels
         public string Title { get; set; }
         public string Poster { get; set; }
         public IEnumerable<MovieShowTimeResponseModel> MovieShowTimes { get; set; }
+        public IEnumerable<CelebrityResponseModel> Actors { get; set; }
     }
 
     public class MovieListResponseModel

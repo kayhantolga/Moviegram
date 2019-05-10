@@ -33,8 +33,13 @@ namespace Moviegram.Application.Managers
 
         public async Task<MovieViewModel> GetMovieDetail(Guid id)
         {
-            var movie = MovieViewModel.FromEntity(await _db.Movies.FirstOrDefaultAsync(r => r.Id == id));
-            return movie;
+            var movie = await _db.Movies
+                .Include(r => r.MovieShowTimes)
+                .Include(r => r.Actors)
+                .ThenInclude(r => r.Celebrity)
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            return MovieViewModel.FromEntity(movie);
         }
 
         public async Task<MovieSearchListViewModel> Search(string keyword)
