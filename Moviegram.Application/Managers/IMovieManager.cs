@@ -7,7 +7,8 @@ namespace Moviegram.Application.Managers
 {
     public interface IMovieManager
     {
-        Task<List<MovieListViewModel>> GetMovieList();
         Task<MovieViewModel> GetMovieDetail(Guid id);
+        Task<List<MovieListViewModel>> GetMovieList();
+        Task<MovieSearchListViewModel> Search(string keyword);
     }
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Moviegram.Application.Managers;
+using Moviegram.Domain.Entities;
 using Moviegram.Models.ResponseModels;
 
 namespace Moviegram.Controllers
@@ -39,6 +40,15 @@ namespace Moviegram.Controllers
                 Movies = (await _movieManager.GetMovieList()).Select(r => new MovieListResponseModel(r)).ToList()
             };
 
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("Search")]
+        [ProducesResponseType(typeof(MoviesListResponseModel), 200)]
+        public async Task<IActionResult> GetSearch(string keyword)
+        {
+            var result = new MovieSearchResponseModel(await _movieManager.Search(keyword));
             return Ok(result);
         }
     }
