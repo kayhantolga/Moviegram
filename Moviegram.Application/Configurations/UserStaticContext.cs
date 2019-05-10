@@ -8,26 +8,14 @@ namespace Moviegram.Application.Configurations
 {
     public class RequestStatics : IUserStaticContext
     {
+        private readonly HttpContext _context;
+
         public RequestStatics(IHttpContextAccessor contextAccessor)
         {
-            if (contextAccessor == null)
-            {
-                return;
-            }
+            if (contextAccessor == null) return;
             _context = contextAccessor.HttpContext;
             InitAll();
         }
-        public RequestStatics(HttpContext context)
-        {
-            if (context == null)
-            {
-                return;
-            }
-            _context = context;
-            InitAll();
-        }
-
-        private readonly HttpContext _context;
 
         public Cursor Cursor { get; set; }
         public MoviegramDbContext Db { get; set; }
@@ -38,7 +26,7 @@ namespace Moviegram.Application.Configurations
             SetDb();
             return Task.CompletedTask;
         }
-        
+
         public Task SetCursor()
         {
             Cursor = _context.Request.GetCursor();
@@ -50,6 +38,5 @@ namespace Moviegram.Application.Configurations
             Db = _context.RequestServices.GetService<MoviegramDbContext>();
             return Task.CompletedTask;
         }
-
     }
 }

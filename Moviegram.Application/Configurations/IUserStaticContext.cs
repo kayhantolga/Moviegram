@@ -8,6 +8,7 @@ namespace Moviegram.Application.Configurations
     {
         Task InitAll();
         Task SetCursor();
+        Task SetDb();
 
         Cursor Cursor { get; set; }
         MoviegramDbContext Db { get; set; }

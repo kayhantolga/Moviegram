@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moviegram.Application.Configurations;
+using Moviegram.Application.Managers;
 using Moviegram.Persistence.DbContexts;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
@@ -50,6 +51,7 @@ namespace Moviegram
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     b => { b.MigrationsAssembly("Moviegram.Persistence"); }));
 
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
@@ -74,8 +76,9 @@ namespace Moviegram
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
-
+            services.AddHttpContextAccessor();
             services.AddScoped<IUserStaticContext, RequestStatics>();
+            services.AddScoped<IMovieManager, MovieCoreManager>();
 
         }
     }

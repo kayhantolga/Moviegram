@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Moviegram.Managers;
+using Moviegram.Application.Managers;
 using Moviegram.Models.ResponseModels;
-using Moviegram.Persistence.DbContexts;
 
 namespace Moviegram.Controllers
 {
@@ -11,23 +10,24 @@ namespace Moviegram.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        private readonly MoviegramDbContext _db;
+        private readonly IMovieManager _movieManager;
 
-        public MovieController(MoviegramDbContext db)
+        public MovieController(IMovieManager movieManager)
         {
-            _db = db;
+            _movieManager = movieManager;
         }
 
-        
-        [HttpGet, Route("Movies"), ProducesResponseType(typeof(MoviesListResponseModel), 200)]
+        [HttpGet]
+        [Route("Movies")]
+        [ProducesResponseType(typeof(MoviesListResponseModel), 200)]
         public async Task<IActionResult> GetMovies()
         {
-            var movieManager = new MovieManager(_db);
-            var result = new MoviesListResponseModel()
+           // var movieManager = new MovieManager(UserStaticContext);
+            var result = new MoviesListResponseModel
             {
-                Movies = (await movieManager.GetMovieList()).Select(r => new MovieListResponseModel(r)).ToList()
+                Movies = (await _movieManager.GetMovieList()).Select(r => new MovieListResponseModel(r)).ToList()
             };
-            
+     
             return Ok(result);
         }
     }
