@@ -19,10 +19,14 @@ namespace Moviegram.Persistence.DbContexts
             //If db already initialized do not seed anything
             if (context.Movies.Any()) return;
 
+            //This will help to generate same random data
+            Randomizer.Seed = new Random(1);
+
             var testMovies = new Faker<Movie>()
                 .RuleFor(o => o.Id, f => Guid.NewGuid())
                 .RuleFor(o => o.Genre, f => f.Lorem.Paragraphs())
-                .RuleFor(o => o.Title, f => $"{f.Hacker.Noun()} {f.Hacker.Verb()}");
+                .RuleFor(o => o.Title, f => $"{f.Lorem.Sentence(3)}")
+                .RuleFor(o=> o.Poster, (f,o)=>f.Image.PlaceholderUrl(1024,1024,o.Title,f.Internet.Color().Replace("#","")));
 
             var testCelebrities = new Faker<Celebrity>()
                 .RuleFor(u => u.Id, f => Guid.NewGuid())

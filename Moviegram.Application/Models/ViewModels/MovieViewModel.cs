@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Moviegram.Common.Utilities;
 using Moviegram.Domain.Entities;
 
 namespace Moviegram.Application.Models.ViewModels
@@ -47,7 +48,7 @@ namespace Moviegram.Application.Models.ViewModels
                 return item => new MovieListViewModel()
                 {
                     Id = item.Id,
-                    Poster = item.Poster,
+                    Poster = item.Poster.ToThumbnail(),
                     Title = item.Title,
                     MovieShowTimes = item.MovieShowTimes.AsQueryable().OrderBy(r => r.ShowTimeStart).Select(MovieShowTimeViewModel.Projection)
                 };
