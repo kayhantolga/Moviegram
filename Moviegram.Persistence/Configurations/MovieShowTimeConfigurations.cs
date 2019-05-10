@@ -4,19 +4,12 @@ using Moviegram.Domain.Entities;
 
 namespace Moviegram.Persistence.Configurations
 {
-    public class MovieCelebrityConfigurations : IEntityTypeConfiguration<MovieCelebrity>
+    public class MovieShowTimeConfigurations : IEntityTypeConfiguration<MovieShowTime>
     {
-        public void Configure(EntityTypeBuilder<MovieCelebrity> builder)
+        public void Configure(EntityTypeBuilder<MovieShowTime> builder)
         {
-            builder.ToTable("MovieCelebrities");
-            builder.HasKey(q =>
-                new
-                {
-                    q.CelebrityId,
-                    q.MovieId
-                });
-            builder.HasOne(r => r.Movie).WithMany(r => r.Actors).HasForeignKey(r => r.MovieId);
-            builder.HasOne(r => r.Celebrity).WithMany(r => r.Movies).HasForeignKey(r => r.CelebrityId);
+            builder.ToTable("MovieShowTimes");
+            builder.HasOne(r => r.Movie).WithMany(r => r.MovieShowTimes).HasForeignKey(r => r.MovieId);
         }
     }
 }
