@@ -11,7 +11,14 @@ namespace Moviegram.Models.ResponseModels
             StartTime = model.StartTime;
         }
 
+        /// <summary>
+        ///     Start time of movie. Ignore date, use only Time section
+        /// </summary>
         public DateTime StartTime { get; set; }
+
+        /// <summary>
+        ///     End time of movie. Ignore date, use only Time section
+        /// </summary>
         public DateTime EndTime { get; set; }
     }
 }

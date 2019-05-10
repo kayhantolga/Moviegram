@@ -51,7 +51,7 @@ namespace Moviegram.Application.Managers
             };
 
             result.Movies = await _db.Movies
-                .FilterByTitleNameStartsWith(keyword)
+                .FilterByTitleStartsWith(keyword)
                 .OrderBy(r => r.Title)
                 .GoToCursor(_userStaticContext.Cursor)
                 .Select(MovieListViewModel.Projection)
@@ -62,7 +62,7 @@ namespace Moviegram.Application.Managers
             {
                 result.SearchDepth++;
                 result.Movies = await _db.Movies
-                    .FilterByTitleNameInclude(keyword)
+                    .FilterByTitleInclude(keyword)
                     .OrderBy(r => r.Title)
                     .GoToCursor(_userStaticContext.Cursor)
                     .Select(MovieListViewModel.Projection)

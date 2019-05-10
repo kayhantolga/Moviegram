@@ -38,6 +38,7 @@ namespace Moviegram.Persistence.DbContexts
             var movies = testMovies.Generate(100);
 
             var random = new Random();
+            //Assign actors to movies
             foreach (var movie in movies)
             {
                 //Take max 10 random actor and make a movie
@@ -54,6 +55,7 @@ namespace Moviegram.Persistence.DbContexts
                 var startTime = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, 9, 0, 0);
                 var tempTime = startTime;
 
+                //Add showTimes to movies
                 do
                 {
                     var tempShowTime = new MovieShowTime

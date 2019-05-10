@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,8 +42,6 @@ namespace Moviegram
                 c.DocumentTitle = "Moviegram";
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
                 c.DocExpansion(DocExpansion.None);
-
-                c.OAuthClientId("424F5699-9FBA-4161-AE79-49839455E04A");
             });
         }
 
@@ -64,10 +65,26 @@ namespace Moviegram
                         Email = "kayhantolga@gmail.com",
                         Url = "https://www.linkedin.com/in/kayhantolga/"
                     },
-                    Description = "More description will be come here."
+                    Description = "<h2>This is the sample project for .Net Core API.</h2>\n" +
+                                  "Clients can call all apis without any authorization.\n" +
+                                  "Every api has own help description.\n" +
+                                  "-------\n" +
+                                  "<b>Cursor Usage</b>\n" +
+                                  "Every api with listed response object has cursor implementation.\n" +
+                                  "You can send your cursor information at Querystring\n" +
+                                  "CursorPageSize for size of items (default 20)\n" +
+                                  "CursorIndex for index of page(default 0)\n" +
+                                  "Sample Usage:\n" +
+                                  "mydomain.com/api/movie/movies?CursorPageSize=5&CursorIndex=0\n" +
+                                  "mydomain.com/api/movie/movies?CursorPageSize=5&CursorIndex=1\n" +
+                                  "-------\n" +
+                                  "Feel free to ask questions, Enjoy!"
+
                 });
                 c.DescribeAllEnumsAsStrings();
                 c.EnableAnnotations();
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFile));
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -79,7 +96,6 @@ namespace Moviegram
             services.AddHttpContextAccessor();
             services.AddScoped<IUserStaticContext, RequestStatics>();
             services.AddScoped<IMovieManager, MovieCoreManager>();
-
         }
     }
 }
