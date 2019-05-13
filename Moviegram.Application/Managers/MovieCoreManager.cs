@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Moviegram.Application.Configurations;
+using Moviegram.Application.Exceptions;
 using Moviegram.Application.Filters;
 using Moviegram.Application.Models.ViewModels;
 using Moviegram.Common.Utilities;
@@ -39,6 +40,10 @@ namespace Moviegram.Application.Managers
                 .ThenInclude(r => r.Celebrity)
                 .FirstOrDefaultAsync(r => r.Id == id);
 
+            if (movie == null)
+            {
+                throw StaticExceptions.AppServerErrors.ObjectNotFound;
+            }
             return MovieViewModel.FromEntity(movie);
         }
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Moviegram.Application;
 using Moviegram.Application.Configurations;
 using Moviegram.Application.Managers;
 using Moviegram.Persistence.DbContexts;
@@ -35,6 +36,7 @@ namespace Moviegram
                 app.UseHsts();
 
             app.UseHttpsRedirection();
+            app.UseMiddleware(typeof(MoviegramExceptionHandler));
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
